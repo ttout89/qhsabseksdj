@@ -1,0 +1,1427 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>영어2 YBM(박) 4~5과 본문 단어 마스터 (127개)</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Segoe UI', Roboto, sans-serif;
+      background: #f8fafc;
+      color: #0f172a;
+      min-height: 100vh;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    button, input { font-family: inherit; }
+    button { cursor: pointer; border: none; background: none; }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 20px 16px 40px;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .badge-row { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 10px;
+      border-radius: 9999px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .pill-indigo { background: #e0e7ff; color: #4338ca; }
+    .pill-sky { background: #e0f2fe; color: #0369a1; }
+    .pill-violet { background: #ede9fe; color: #6d28d9; }
+    .pill-emerald { background: #d1fae5; color: #047857; }
+    .pill-rose { background: #ffe4e6; color: #be123c; }
+
+    .subtitle { font-size: 12px; font-weight: 600; color: #64748b; }
+    .title { font-size: 21px; font-weight: 800; letter-spacing: -0.02em; color: #0f172a; }
+
+    /* Mode Tabs */
+    .mode-tabs {
+      display: inline-flex;
+      padding: 4px;
+      background: #e2e8f0;
+      border-radius: 12px;
+      gap: 2px;
+      overflow-x: auto;
+      max-width: 100%;
+    }
+
+    .mode-tab {
+      padding: 7px 13px;
+      border-radius: 9px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #475569;
+      white-space: nowrap;
+      transition: all 0.15s ease;
+    }
+
+    .mode-tab.active {
+      background: #ffffff;
+      color: #4338ca;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.1);
+    }
+
+    /* Filter & Stats Bar */
+    .control-bar {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 12px 14px;
+      margin-bottom: 16px;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+    }
+
+    .control-top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .filter-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .filter-btn {
+      padding: 5px 11px;
+      border-radius: 9999px;
+      font-size: 12px;
+      font-weight: 700;
+      background: #f1f5f9;
+      color: #475569;
+      border: 1px solid transparent;
+      transition: all 0.15s ease;
+    }
+    .filter-btn:hover { background: #e2e8f0; }
+    .filter-btn.active { background: #0f172a; color: #ffffff; }
+    .filter-btn.weak-btn { background: #fff1f2; color: #be123c; border-color: #fecdd3; }
+    .filter-btn.weak-btn.active { background: #e11d48; color: #ffffff; border-color: #e11d48; }
+
+    .mastery-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #475569;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 7px;
+      background: #f1f5f9;
+      border-radius: 9999px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #4f46e5, #10b981);
+      border-radius: 9999px;
+      transition: width 0.3s ease;
+    }
+
+    /* Buttons */
+    .btn-sm {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 6px 11px;
+      border-radius: 9px;
+      font-size: 12px;
+      font-weight: 700;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      color: #334155;
+      transition: all 0.15s ease;
+    }
+    .btn-sm:hover { background: #f1f5f9; }
+    .btn-sm.active-toggle {
+      background: #4f46e5;
+      border-color: #4f46e5;
+      color: #ffffff;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 11px 18px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 700;
+      background: #4f46e5;
+      color: #ffffff;
+      transition: all 0.15s ease;
+    }
+    .btn-primary:hover { background: #4338ca; }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 11px 16px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 700;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      color: #334155;
+      transition: all 0.15s ease;
+    }
+    .btn-outline:hover:not(:disabled) { background: #f1f5f9; }
+    .btn-outline:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    .speak-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 9999px;
+      background: #eef2ff;
+      color: #4f46e5;
+      transition: all 0.15s ease;
+      flex-shrink: 0;
+    }
+    .speak-btn:hover { background: #e0e7ff; transform: scale(1.06); }
+
+    /* ================= FLASHCARD VIEW ================= */
+    .fc-tools {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .perspective { perspective: 1200px; margin-bottom: 14px; }
+    .card-inner {
+      position: relative;
+      width: 100%;
+      min-height: 320px;
+      transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+      transform-style: preserve-3d;
+      cursor: pointer;
+      user-select: none;
+    }
+    .card-inner.is-flipped { transform: rotateY(180deg); }
+
+    .card-face {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      border-radius: 24px;
+      padding: 24px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card-front {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+    }
+
+    .card-back {
+      transform: rotateY(180deg);
+      background: #0f172a;
+      color: #ffffff;
+      border: 1px solid #1e293b;
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.18);
+    }
+
+    .fc-word {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #0f172a;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .fc-example-front {
+      font-size: 14px;
+      color: #64748b;
+      text-align: center;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .fc-meaning {
+      font-size: 24px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 12px;
+      word-break: keep-all;
+    }
+
+    .fc-box {
+      background: rgba(30, 41, 59, 0.85);
+      border: 1px solid rgba(71, 85, 105, 0.5);
+      border-radius: 14px;
+      padding: 12px 14px;
+      margin-bottom: 10px;
+    }
+
+    .fc-box-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: #a5b4fc;
+      margin-bottom: 3px;
+    }
+
+    .fc-box-text {
+      font-size: 13px;
+      color: #e2e8f0;
+      line-height: 1.5;
+    }
+
+    .judge-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .judge-btn {
+      padding: 13px 16px;
+      border-radius: 14px;
+      font-size: 15px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.15s ease;
+    }
+    .judge-weak { background: #fff1f2; border: 2px solid #fecdd3; color: #be123c; }
+    .judge-weak:hover { background: #ffe4e6; }
+    .judge-know { background: #ecfdf5; border: 2px solid #a7f3d0; color: #047857; }
+    .judge-know:hover { background: #d1fae5; }
+
+    .nav-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .nav-row > .btn-outline { flex: 1; }
+
+    /* ================= LIST VIEW ================= */
+    .list-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .search-input {
+      flex: 1;
+      min-width: 180px;
+      padding: 8px 13px;
+      border-radius: 10px;
+      border: 1px solid #cbd5e1;
+      background: #ffffff;
+      font-size: 13px;
+      outline: none;
+    }
+    .search-input:focus { border-color: #4f46e5; box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12); }
+
+    .vocab-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .vocab-row {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 13px 15px;
+      display: grid;
+      grid-template-columns: 34px 1.1fr 1.2fr auto;
+      align-items: center;
+      gap: 12px;
+      transition: border-color 0.15s ease;
+    }
+    .vocab-row.known { border-left: 4px solid #10b981; background: #f8fafc; }
+    .vocab-row.weak { border-left: 4px solid #f43f5e; }
+
+    .word-cell {
+      font-size: 16px;
+      font-weight: 800;
+      color: #0f172a;
+      cursor: pointer;
+    }
+
+    .meaning-cell {
+      font-size: 14px;
+      font-weight: 600;
+      color: #334155;
+      cursor: pointer;
+      word-break: keep-all;
+    }
+
+    .engdef-sub {
+      font-size: 12px;
+      color: #64748b;
+      margin-top: 2px;
+      font-weight: 400;
+    }
+
+    .blurred {
+      color: transparent !important;
+      background: #e2e8f0;
+      border-radius: 6px;
+      user-select: none;
+      padding: 2px 6px;
+    }
+    .blurred .engdef-sub { visibility: hidden; }
+
+    .check-btn {
+      padding: 5px 10px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      border: 1px solid #cbd5e1;
+      color: #64748b;
+      background: #ffffff;
+      white-space: nowrap;
+    }
+    .check-btn.is-known {
+      background: #10b981;
+      border-color: #10b981;
+      color: #ffffff;
+    }
+
+    /* ================= QUIZ VIEW ================= */
+    .quiz-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 6px 20px rgba(15, 23, 42, 0.06);
+      margin-bottom: 14px;
+    }
+
+    .quiz-prompt-box {
+      text-align: center;
+      padding: 18px 12px;
+      margin-bottom: 18px;
+      background: #f8fafc;
+      border-radius: 16px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .quiz-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .quiz-opt {
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 2px solid #e2e8f0;
+      background: #ffffff;
+      font-size: 15px;
+      font-weight: 700;
+      color: #1e293b;
+      text-align: left;
+      transition: all 0.15s ease;
+      word-break: keep-all;
+    }
+    .quiz-opt:hover:not(.locked) { background: #eef2ff; border-color: #a5b4fc; }
+    .quiz-opt.correct { background: #ecfdf5; border-color: #10b981; color: #065f46; }
+    .quiz-opt.wrong { background: #fff1f2; border-color: #f43f5e; color: #9f1239; }
+    .quiz-opt.muted { opacity: 0.45; }
+
+    /* ================= SPELLING VIEW ================= */
+    .spell-input {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 2px solid #cbd5e1;
+      font-size: 18px;
+      font-weight: 700;
+      text-align: center;
+      outline: none;
+      margin-bottom: 12px;
+    }
+    .spell-input:focus { border-color: #4f46e5; box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.14); }
+    .spell-input.ok { border-color: #10b981; background: #ecfdf5; color: #065f46; }
+    .spell-input.no { border-color: #f43f5e; background: #fff1f2; color: #9f1239; }
+
+    .feedback-banner {
+      padding: 12px 15px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 700;
+      margin-top: 12px;
+      text-align: center;
+    }
+    .fb-ok { background: #ecfdf5; color: #047857; border: 1px solid #a7f3d0; }
+    .fb-no { background: #fff1f2; color: #be123c; border: 1px solid #fecdd3; }
+
+    .empty-box {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 36px 20px;
+      text-align: center;
+    }
+
+    .shortcuts {
+      margin-top: 10px;
+      text-align: center;
+      font-size: 12px;
+      color: #94a3b8;
+    }
+    kbd {
+      display: inline-block;
+      padding: 1px 6px;
+      border-radius: 5px;
+      background: #e2e8f0;
+      color: #475569;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .hidden { display: none !important; }
+
+    @media (max-width: 640px) {
+      .vocab-row {
+        grid-template-columns: 32px 1fr auto;
+      }
+      .meaning-cell {
+        grid-column: 2 / 4;
+      }
+      .quiz-options {
+        grid-template-columns: 1fr;
+      }
+      .fc-word { font-size: 26px; }
+      .shortcuts { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div>
+        <div class="badge-row">
+          <span class="pill pill-indigo">영어2 YBM(박)</span>
+          <span class="subtitle">4과(65) · 5과(62) 총 127단어</span>
+        </div>
+        <h1 class="title">본문 단어 마스터</h1>
+      </div>
+
+      <div class="mode-tabs" role="tablist">
+        <button data-mode="flashcard" type="button" class="mode-tab active">플래시카드</button>
+        <button data-mode="list" type="button" class="mode-tab">단어장(가리기)</button>
+        <button data-mode="quiz" type="button" class="mode-tab">객관식 퀴즈</button>
+        <button data-mode="spelling" type="button" class="mode-tab">빈칸·스펠링</button>
+      </div>
+    </header>
+
+    <!-- Global Filter & Mastery Bar -->
+    <div class="control-bar">
+      <div class="control-top">
+        <div class="filter-group">
+          <button data-filter="all" type="button" class="filter-btn active">전체 (127)</button>
+          <button data-filter="l4" type="button" class="filter-btn">4과 (65)</button>
+          <button data-filter="l5" type="button" class="filter-btn">5과 (62)</button>
+          <button data-filter="weak" type="button" id="weakFilterBtn" class="filter-btn weak-btn">헷갈리는 단어 (0)</button>
+        </div>
+
+        <div class="mastery-info">
+          <span>암기율 <strong id="masteryPct" style="color:#4f46e5;">0%</strong> (<span id="knownCount">0</span>/<span id="totalCount">127</span>)</span>
+          <button id="resetAllBtn" type="button" class="btn-sm">초기화</button>
+        </div>
+      </div>
+      <div class="progress-track">
+        <div id="masteryBar" class="progress-fill" style="width:0%;"></div>
+      </div>
+    </div>
+
+    <!-- ================= 1. FLASHCARD VIEW ================= -->
+    <section id="view-flashcard">
+      <div class="fc-tools">
+        <span id="fcCounter" style="font-size:13px;font-weight:700;color:#475569;">1 / 127</span>
+        <div style="display:flex;gap:6px;">
+          <button id="fcToggleExBtn" type="button" class="btn-sm">앞면 예문 숨기기</button>
+          <button id="fcShuffleBtn" type="button" class="btn-sm">섞기</button>
+        </div>
+      </div>
+
+      <div id="fcEmpty" class="empty-box hidden">
+        <p style="font-size:16px;font-weight:800;margin-bottom:6px;">표시할 단어가 없습니다!</p>
+        <p style="font-size:13px;color:#64748b;margin-bottom:14px;">헷갈리는 단어가 없거나 모두 암기했습니다.</p>
+        <button id="fcBackAllBtn" type="button" class="btn-primary">전체 단어 보기</button>
+      </div>
+
+      <div id="fcStage">
+        <div class="perspective">
+          <div id="flashcard" class="card-inner" tabindex="0" role="button" aria-label="카드 뒤집기">
+            <!-- Front -->
+            <div class="card-face card-front">
+              <div style="display:flex;align-items:center;justify-content:space-between;">
+                <span id="fcBadge" class="pill pill-sky">4과</span>
+                <div style="display:flex;align-items:center;gap:8px;">
+                  <span id="fcStatusBadge" class="pill hidden"></span>
+                  <button id="fcSpeakBtn" type="button" class="speak-btn" title="발음 듣기" aria-label="발음 듣기">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5L6 9H2v6h4l5 4V5zm4.54 3.46a5 5 0 010 7.07m2.83-9.9a9 9 0 010 12.73"/></svg>
+                  </button>
+                </div>
+              </div>
+
+              <div style="margin:auto 0;padding:18px 0;">
+                <p id="fcWord" class="fc-word"></p>
+                <p id="fcFrontEx" class="fc-example-front"></p>
+              </div>
+
+              <p style="text-align:center;font-size:12px;color:#94a3b8;font-weight:600;">카드를 눌러 뜻 · 영영풀이 확인하기</p>
+            </div>
+
+            <!-- Back -->
+            <div class="card-face card-back">
+              <div style="display:flex;align-items:center;justify-content:space-between;">
+                <span id="fcBackWord" style="font-size:15px;font-weight:800;color:#a5b4fc;"></span>
+                <span id="fcBackChapter" class="pill" style="background:#1e293b;color:#cbd5e1;">4과</span>
+              </div>
+
+              <div style="margin:auto 0;padding:10px 0;">
+                <p id="fcMeaning" class="fc-meaning"></p>
+                <div class="fc-box">
+                  <p class="fc-box-label">영영 풀이 (시험 출제 포인트)</p>
+                  <p id="fcEngDef" class="fc-box-text"></p>
+                </div>
+                <div class="fc-box" style="margin-bottom:0;">
+                  <p class="fc-box-label">예시 문장</p>
+                  <p id="fcBackEx" class="fc-box-text"></p>
+                </div>
+              </div>
+
+              <p style="text-align:center;font-size:12px;color:#94a3b8;">다시 누르면 앞면으로 돌아갑니다</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="judge-grid">
+          <button id="markWeakBtn" type="button" class="judge-btn judge-weak">아직 헷갈림</button>
+          <button id="markKnowBtn" type="button" class="judge-btn judge-know">외웠음 ✓</button>
+        </div>
+
+        <div class="nav-row">
+          <button id="fcPrevBtn" type="button" class="btn-outline">← 이전</button>
+          <button id="fcFlipBtn" type="button" class="btn-primary">뒤집기</button>
+          <button id="fcNextBtn" type="button" class="btn-outline">다음 →</button>
+        </div>
+
+        <p class="shortcuts">
+          단축키: <kbd>Space</kbd> 뒤집기 · <kbd>1</kbd> 헷갈림 · <kbd>2</kbd> 외웠음 · <kbd>←</kbd> <kbd>→</kbd> 이동
+        </p>
+      </div>
+    </section>
+
+    <!-- ================= 2. LIST VIEW ================= -->
+    <section id="view-list" class="hidden">
+      <div class="list-toolbar">
+        <input id="searchInput" type="text" class="search-input" placeholder="영어 단어, 뜻, 영영풀이 검색..." />
+        <div style="display:flex;gap:6px;">
+          <button id="hideWordBtn" type="button" class="btn-sm">영어 가리기</button>
+          <button id="hideMeaningBtn" type="button" class="btn-sm">뜻 가리기</button>
+        </div>
+      </div>
+      <p style="font-size:12px;color:#64748b;margin-bottom:10px;">가린 상태에서 단어나 뜻을 누르면 해당 항목만 살짝 확인할 수 있습니다.</p>
+      <div id="vocabListContainer" class="vocab-list"></div>
+    </section>
+
+    <!-- ================= 3. QUIZ VIEW ================= -->
+    <section id="view-quiz" class="hidden">
+      <div class="fc-tools">
+        <div style="display:flex;gap:6px;">
+          <button id="quizTypeMeaningBtn" type="button" class="btn-sm active-toggle">영어 → 뜻</button>
+          <button id="quizTypeEngDefBtn" type="button" class="btn-sm">영영풀이 → 영어</button>
+        </div>
+        <div style="font-size:13px;font-weight:700;color:#475569;">
+          연속 정답 <strong id="quizStreak" style="color:#10b981;">0</strong> · 정답 <strong id="quizCorrect" style="color:#4f46e5;">0</strong>/<span id="quizTotal">0</span>
+        </div>
+      </div>
+
+      <div id="quizEmpty" class="empty-box hidden">
+        <p style="font-size:16px;font-weight:800;margin-bottom:6px;">퀴즈를 낼 단어가 부족합니다</p>
+        <p style="font-size:13px;color:#64748b;margin-bottom:14px;">전체, 4과, 5과 필터로 전환해 풀어보세요.</p>
+        <button id="quizBackAllBtn" type="button" class="btn-primary">전체 단어로 풀기</button>
+      </div>
+
+      <div id="quizStage" class="quiz-card">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+          <span id="quizChapterBadge" class="pill pill-sky">4과</span>
+          <span id="quizModeLabel" style="font-size:12px;font-weight:700;color:#64748b;">알맞은 우리말 뜻을 고르세요</span>
+        </div>
+
+        <div class="quiz-prompt-box">
+          <p id="quizPromptMain" style="font-size:24px;font-weight:800;color:#0f172a;word-break:keep-all;"></p>
+          <p id="quizPromptSub" style="font-size:13px;color:#64748b;margin-top:6px;"></p>
+        </div>
+
+        <div id="quizOptions" class="quiz-options"></div>
+
+        <div id="quizFeedback" class="feedback-banner hidden"></div>
+
+        <div style="margin-top:16px;display:flex;justify-content:flex-end;">
+          <button id="quizNextBtn" type="button" class="btn-primary hidden">다음 문제 →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 4. SPELLING VIEW ================= -->
+    <section id="view-spelling" class="hidden">
+      <div class="fc-tools">
+        <span style="font-size:13px;font-weight:700;color:#475569;">예문 빈칸과 뜻을 보고 단어를 입력하세요</span>
+        <span style="font-size:13px;font-weight:700;color:#4f46e5;">정답 <span id="spellCorrect">0</span>/<span id="spellTotal">0</span></span>
+      </div>
+
+      <div id="spellEmpty" class="empty-box hidden">
+        <p style="font-size:16px;font-weight:800;margin-bottom:6px;">테스트할 단어가 없습니다</p>
+        <button id="spellBackAllBtn" type="button" class="btn-primary" style="margin-top:10px;">전체 단어로 풀기</button>
+      </div>
+
+      <div id="spellStage" class="quiz-card">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+          <span id="spellChapterBadge" class="pill pill-sky">4과</span>
+          <button id="spellHintBtn" type="button" class="btn-sm">힌트 보기</button>
+        </div>
+
+        <div class="quiz-prompt-box">
+          <p id="spellMeaning" style="font-size:22px;font-weight:800;color:#0f172a;margin-bottom:8px;word-break:keep-all;"></p>
+          <p id="spellEngDef" style="font-size:13px;color:#475569;margin-bottom:10px;"></p>
+          <p id="spellExample" style="font-size:14px;font-weight:600;color:#4338ca;"></p>
+          <p id="spellHintText" style="font-size:13px;font-weight:700;color:#d97706;margin-top:8px;" class="hidden"></p>
+        </div>
+
+        <form id="spellForm">
+          <input id="spellInput" type="text" class="spell-input" placeholder="영어 단어 입력 후 Enter" autocomplete="off" spellcheck="false" />
+          <div style="display:flex;gap:10px;">
+            <button id="spellCheckBtn" type="submit" class="btn-primary" style="flex:1;">정답 확인</button>
+            <button id="spellSkipBtn" type="button" class="btn-outline">정답 보기</button>
+            <button id="spellNextBtn" type="button" class="btn-primary hidden" style="flex:1;">다음 단어 →</button>
+          </div>
+        </form>
+
+        <div id="spellFeedback" class="feedback-banner hidden"></div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const VOCAB = [
+      // LESSON 4 (65 words)
+      { id: 1, ch: 'l4', w: 'remarkable', m: 'a. 주목할만한, 뛰어난', d: 'worthy of attention; striking', ex: "The artist's work was remarkable for its originality." },
+      { id: 2, ch: 'l4', w: 'appreciate', m: 'v. 진가를 알아보다', d: 'to recognize the full worth of', ex: "There's no point buying him expensive wines — he doesn't appreciate them." },
+      { id: 3, ch: 'l4', w: 'eagerly', m: 'ad. 열정적으로', d: 'in a keenly expectant or interested manner', ex: 'Fans of the show are eagerly awaiting the new season.' },
+      { id: 4, ch: 'l4', w: 'delight', m: 'v. 기뻐하다, 즐거워하다', d: 'to enjoy something very much', ex: 'Every summer, they delight in exploring the hidden trail.' },
+      { id: 5, ch: 'l4', w: 'recognize', m: 'v. 깨닫다, 알아보다', d: 'to become aware of something through experience', ex: 'I recognized her from her picture.' },
+      { id: 6, ch: 'l4', w: 'legendary', m: 'a. 전설적인', d: 'very famous and admired; described in or based on legends', ex: 'The legendary musician is known for his soulful voice.' },
+      { id: 7, ch: 'l4', w: 'marine', m: 'a. 해양의', d: 'relating to or found in the sea', ex: 'The marine biologist studied the coral reefs.' },
+      { id: 8, ch: 'l4', w: 'descend', m: 'v. 내려가다', d: 'to move or fall downward', ex: 'The plane began to descend for landing.' },
+      { id: 9, ch: 'l4', w: 'innate', m: 'a. 타고난, 선천적인', d: 'inborn; natural', ex: 'She had an innate talent for playing the violin.' },
+      { id: 10, ch: 'l4', w: 'ultimately', m: 'ad. 궁극적으로, 결국', d: 'finally; in the end', ex: 'Ultimately, the decision is yours.' },
+      { id: 11, ch: 'l4', w: 'pioneer', m: 'n. 선구자', d: 'a person who is among the first to explore or settle a new country or area', ex: 'She was a pioneer in the field of computer science.' },
+      { id: 12, ch: 'l4', w: 'conservation', m: 'n. 보존, 보호', d: 'the action of conserving something', ex: 'The conservation of forests is important for the environment.' },
+      { id: 13, ch: 'l4', w: 'fuel', m: 'v. 촉진시키다, 자극하다', d: 'to give support or strength to (something)', ex: 'His words fueled her anger even more.' },
+      { id: 14, ch: 'l4', w: 'situate', m: 'v. 위치시키다', d: 'to fix or build (something) in a certain place or position', ex: 'The house is situated on a hill overlooking the sea.' },
+      { id: 15, ch: 'l4', w: 'cope with', m: '~에 대처하다, 대응하다', d: 'to deal effectively with something difficult', ex: 'She found it difficult to cope with the stress of her new job.' },
+      { id: 16, ch: 'l4', w: 'oceanographer', m: 'n. 해양학자', d: 'a scientist who studies the ocean', ex: 'The oceanographer was fascinated by the deep sea creatures.' },
+      { id: 17, ch: 'l4', w: 'push the boundaries of', m: '~의 경계를 넓히다', d: 'to go beyond the usual limits of something', ex: 'The artist pushed the boundaries of traditional painting.' },
+      { id: 18, ch: 'l4', w: 'challenge', m: 'v. 도전하다', d: "to question whether something is true, accurate, or legal; to refuse to accept someone's authority", ex: 'No one dared to challenge his leadership.' },
+      { id: 19, ch: 'l4', w: 'stereotype', m: 'n. 고정관념', d: 'a widely held but fixed and oversimplified image or idea of a particular type of person or thing', ex: "He doesn't conform to the stereotype of a businessman." },
+      { id: 20, ch: 'l4', w: 'residence', m: 'n. 거주', d: 'the state of living in a place', ex: 'They had entered the country and had applied for permanent residence.' },
+      { id: 21, ch: 'l4', w: 'coral reef', m: '산호초', d: 'a ridge of rock in the sea formed by the growth and deposit of coral', ex: "The Great Barrier Reef is the world's largest coral reef system." },
+      { id: 22, ch: 'l4', w: 'accomplish', m: 'v. 달성하다, 성취하다', d: 'to achieve or complete successfully', ex: 'He accomplished his goal of running a marathon.' },
+      { id: 23, ch: 'l4', w: 'unattached', m: 'a. 연결되지 않은 채로', d: 'not attached or joined to anything or anyone', ex: 'The boat drifted unattached from the dock.' },
+      { id: 24, ch: 'l4', w: 'mark', m: 'v. 표시하다, 기록하다', d: 'to write or draw a symbol or letter on (an object) in order to give information about it', ex: 'He marked the spot on the map where the treasure was buried.' },
+      { id: 25, ch: 'l4', w: 'charm', m: 'v. 매혹하다', d: 'to attract someone and make them like you', ex: 'He charmed everyone with his wit and humor.' },
+      { id: 26, ch: 'l4', w: 'glowing', m: 'a. 반짝이는', d: 'giving out a steady radiance', ex: 'The campfire emitted a warm, glowing light.' },
+      { id: 27, ch: 'l4', w: 'emit', m: 'v. 내다, 내뿜다', d: 'to produce and discharge (something, especially gas or radiation)', ex: 'The factory emitted harmful pollutants into the air.' },
+      { id: 28, ch: 'l4', w: 'symbolize', m: 'v. 상징하다', d: 'to be a symbol of', ex: 'The dove symbolizes peace.' },
+      { id: 29, ch: 'l4', w: 'associate', m: 'v. 연관시키다', d: "to connect (someone or something) with something else in one's mind", ex: 'People usually associate the color red with love.' },
+      { id: 30, ch: 'l4', w: 'note', m: 'v. 언급하다', d: 'to give your attention to something by discussing it or making a written record of it', ex: 'The newspaper does not note what happened then.' },
+      { id: 31, ch: 'l4', w: 'parallel', m: 'n. 유사점', d: 'a person or thing that is similar to another', ex: 'There are interesting parallels between the two novels.' },
+      { id: 32, ch: 'l4', w: 'frontier', m: 'n. 개척지', d: 'the outer edge of a country or area that is the farthest point where people have started to live and build towns', ex: 'The pioneers set out to explore the vast and unknown frontier.' },
+      { id: 33, ch: 'l4', w: 'appoint', m: 'v. 임명하다', d: 'to assign a job or role to (someone)', ex: 'The president appointed a new ambassador to China.' },
+      { id: 34, ch: 'l4', w: 'chief', m: 'a. 최고의, 제1위의', d: 'highest in rank', ex: "She is the government's chief medical officer." },
+      { id: 35, ch: 'l4', w: 'administration', m: 'n. 행정부(청)', d: 'a governmental agency or board', ex: 'The drug has been approved by the U.S. Food and Drug Administration.' },
+      { id: 36, ch: 'l4', w: 'senior', m: 'a. 상위의, 수석의', d: 'high or higher in rank', ex: 'The company is looking to hire a senior manager with experience in the tech industry.' },
+      { id: 37, ch: 'l4', w: 'official', m: 'n. 관리', d: 'a person holding public office or having official duties, especially as a representative of an organization or government department', ex: 'The government official announced a new policy.' },
+      { id: 38, ch: 'l4', w: 'restriction', m: 'n. 제한, 제약', d: 'a limiting condition or measure, especially a legal one', ex: 'The government has imposed travel restrictions due to the pandemic.' },
+      { id: 39, ch: 'l4', w: 'resign', m: 'v. 사임하다', d: 'to leave a job or other position voluntarily', ex: "The CEO resigned after the company's financial losses." },
+      { id: 40, ch: 'l4', w: 'activist', m: 'n. 활동가, 운동가', d: 'a person who campaigns to bring about political or social change', ex: 'The activist group organized a protest against climate change.' },
+      { id: 41, ch: 'l4', w: 'sector', m: 'n. 부문, 분야', d: 'an area or portion that is distinct from others', ex: 'The technology sector is booming.' },
+      { id: 42, ch: 'l4', w: 'grant', m: 'v. 부여하다', d: 'to agree to give or allow (something requested) to', ex: 'The foundation granted him a scholarship to study abroad.' },
+      { id: 43, ch: 'l4', w: 'expertise', m: 'n. 전문 지식(기술)', d: 'expert skill or knowledge in a particular field', ex: 'She has expertise in environmental law.' },
+      { id: 44, ch: 'l4', w: 'commit oneself to', m: '~에 전념하다', d: "to promise or give one's loyalty, time or money to a particular principle, person or plan of action", ex: 'He committed himself to finishing the project on time.' },
+      { id: 45, ch: 'l4', w: 'awareness', m: 'n. 의식, 관심', d: 'knowledge or perception of a situation or fact', ex: 'The campaign aims to raise awareness of mental health issues.' },
+      { id: 46, ch: 'l4', w: 'prominence', m: 'n. 명성', d: 'the state of being important or famous', ex: 'The company gained prominence in the market due to its innovative products.' },
+      { id: 47, ch: 'l4', w: 'initiate', m: 'v. 시작하다', d: 'to cause the beginning of (something); to start or begin (something)', ex: 'The consultant suggested our company should initiate a process out of the traditional business into new areas.' },
+      { id: 48, ch: 'l4', w: 'virtually', m: 'ad. 가상으로', d: 'by means of computers or the Internet; in a way that exists or happens on computers or the Internet', ex: 'Nowadays all these things can be experienced virtually.' },
+      { id: 49, ch: 'l4', w: 'foster', m: 'v. 조성하다, 발전시키다', d: 'to encourage or promote the development of (something, typically something regarded as good)', ex: 'The program aims to foster economic growth in the region.' },
+      { id: 50, ch: 'l4', w: 'distinguished', m: 'a. 유명한, 저명한', d: 'successful, authoritative, and commanding great respect', ex: 'She is a distinguished scientist with numerous awards.' },
+      { id: 51, ch: 'l4', w: 'annual', m: 'a. 매년의, 연례의', d: 'occurring once every year', ex: 'The company holds an annual meeting for its shareholders.' },
+      { id: 52, ch: 'l4', w: 'refuge', m: 'n. 피난처', d: 'protection or shelter from danger or trouble', ex: 'The people sought refuge in the church during the storm.' },
+      { id: 53, ch: 'l4', w: 'establish', m: 'v. 설립하다', d: 'to set up (an organization, system, or set of rules) on a firm or permanent basis', ex: 'The university was established in the 19th century.' },
+      { id: 54, ch: 'l4', w: 'inspire', m: 'v. 격려하다, 행동을 촉구하다', d: 'to fill (someone) with the urge or ability to do or feel something', ex: 'The teacher inspired her students to love learning.' },
+      { id: 55, ch: 'l4', w: 'in line with', m: '~에 따른, ~에 부합하는', d: 'in agreement with', ex: "The company's new policies are in line with the latest regulations." },
+      { id: 56, ch: 'l4', w: 'maintain', m: 'v. 유지하다', d: 'to cause or enable (a condition or state of affairs) to continue', ex: "It's important to maintain a healthy diet and exercise regularly." },
+      { id: 57, ch: 'l4', w: 'driven by', m: '~에 의한, ~을 바탕으로 하는', d: 'motivated or determined by', ex: 'The athlete was driven by a desire to win.' },
+      { id: 58, ch: 'l4', w: 'dedication', m: 'n. 헌신', d: 'the quality of being dedicated or committed to a task or purpose', ex: 'Her dedication to her work is an inspiration to us all.' },
+      { id: 59, ch: 'l4', w: 'consistently', m: 'ad. 지속적으로', d: 'in every case or on every occasion', ex: 'The company has consistently exceeded its sales targets.' },
+      { id: 60, ch: 'l4', w: 'acknowledge', m: 'v. 인정하다, 알다', d: 'to accept or admit the existence or truth of', ex: 'The manager acknowledged the error and apologized to the customer.' },
+      { id: 61, ch: 'l4', w: 'stress', m: 'n. 스트레스', d: 'pressure or tension exerted on a material object', ex: 'People under a lot of stress may experience headaches.' },
+      { id: 62, ch: 'l4', w: 'ensure', m: 'v. 보장하다', d: 'to make certain that (something) shall occur or be the case', ex: 'I cannot ensure that he will keep his word.' },
+      { id: 63, ch: 'l4', w: 'expedition', m: 'n. 탐험, 탐사', d: 'a journey or voyage undertaken by a group of people with a particular purpose, especially that of exploration, scientific research', ex: 'The team of scientists embarked on an expedition to Antarctica.' },
+      { id: 64, ch: 'l4', w: 'contribution', m: 'n. 기여', d: 'the part played by a person or thing in bringing about a result or helping something to advance', ex: 'His contributions to the field of medicine were significant.' },
+      { id: 65, ch: 'l4', w: 'undoubtedly', m: 'ad. 의심할 여지 없이', d: 'without doubt; certainly', ex: 'She is undoubtedly one of the most talented musicians of her generation.' },
+
+      // LESSON 5 (62 words)
+      { id: 66, ch: 'l5', w: 'concerto', m: 'n. 협주곡', d: 'a piece of music usually written for one instrument and an orchestra', ex: 'The concerto performed by the orchestra captivated the audience with its beautiful melodies.' },
+      { id: 67, ch: 'l5', w: 'wash over', m: '밀려오다, 엄습하다', d: 'to affect or be felt by (someone) thoroughly and deeply', ex: 'A feeling of calmness washed over her as she sat by the ocean.' },
+      { id: 68, ch: 'l5', w: 'breeze', m: 'n. 산들바람, 미풍', d: 'a light and pleasant wind', ex: 'She enjoyed the peaceful afternoon, feeling the cool breeze against her skin.' },
+      { id: 69, ch: 'l5', w: 'optimistic', m: 'a. 낙관적인', d: 'hoping or believing that good things will happen in the future', ex: 'The team remained optimistic about their chances of winning the championship, despite setbacks.' },
+      { id: 70, ch: 'l5', w: 'inspired', m: 'a. 탁월한', d: 'excellent, or resulting from inspiration', ex: 'Her performance in the play was truly inspired, captivating the audience from beginning to end.' },
+      { id: 71, ch: 'l5', w: 'nightstand', m: 'n. (침대 옆) 탁자', d: 'a small table that is kept at the side of a bed', ex: 'She reached for her glasses on the nightstand before going to bed.' },
+      { id: 72, ch: 'l5', w: 'affectionate', m: 'a. 다정한', d: 'showing feelings of liking or love', ex: 'The couple shared an affectionate embrace after being apart for months.' },
+      { id: 73, ch: 'l5', w: 'ceiling', m: 'n. 천장', d: 'the upper surface of a room that you see when you look above you', ex: 'The room felt spacious thanks to the high ceiling and large windows.' },
+      { id: 74, ch: 'l5', w: 'compatibility', m: 'n. 궁합, 양립 가능성', d: 'the fact of being able to exist, live, or work successfully with something or someone else', ex: "The couple's shared interests and values contributed to their compatibility and strong relationship." },
+      { id: 75, ch: 'l5', w: 'look forward to', m: '~을 기대하다', d: 'to feel pleased and excited about something that is going to happen', ex: 'We look forward to hearing your feedback on the new product line.' },
+      { id: 76, ch: 'l5', w: 'get through', m: '(일을) 끝내다, 완수하다', d: 'to finish something successfully', ex: 'It took hours to get through all the paperwork.' },
+      { id: 77, ch: 'l5', w: 'legal', m: 'a. 법률과 관련된', d: 'connected with the law', ex: 'He sought advice from a legal expert regarding the contract terms.' },
+      { id: 78, ch: 'l5', w: 'assistant', m: 'n. 조수, 보조원', d: 'someone who helps someone else to do a job', ex: 'As a research assistant, his duties included gathering data and analyzing findings.' },
+      { id: 79, ch: 'l5', w: 'attend', m: 'v. 참석하다', d: 'to go to an event, place, etc.', ex: 'Students are required to attend all classes to pass the course.' },
+      { id: 80, ch: 'l5', w: 'case', m: 'n. 사건', d: 'a matter to be decided by a judge in a law court', ex: "The lawyer presented a compelling argument in defense of her client's case." },
+      { id: 81, ch: 'l5', w: 'go light on', m: '(식사를) 가볍게 하다', d: 'to use less of something; to eat only a small amount of food', ex: "It's best to go light on sugary snacks to maintain a healthy diet." },
+      { id: 82, ch: 'l5', w: 'weird', m: 'a. 기이한, 이상한', d: 'very strange and unusual, unexpected, or not natural', ex: 'His weird sense of humor always left people laughing.' },
+      { id: 83, ch: 'l5', w: 'complain', m: 'v. 불평하다', d: 'to say that something is wrong or not satisfactory', ex: 'Customers often complain about the slow service at this restaurant.' },
+      { id: 84, ch: 'l5', w: 'install', m: 'v. 설치하다', d: 'to put something in place so that it is ready for use', ex: 'She followed the instructions carefully to install the shelves in her room.' },
+      { id: 85, ch: 'l5', w: 'belong to', m: '~에 속하다', d: 'to be a member of', ex: 'These books belong to the library.' },
+      { id: 86, ch: 'l5', w: 'tell', m: 'v. 알다, 판단하다', d: 'to know, recognize, or be certain', ex: 'She could tell by his expression that something was bothering him.' },
+      { id: 87, ch: 'l5', w: 'account', m: 'n. 계정', d: 'an arrangement in which a person uses the Internet or email services of a particular company', ex: 'Remember to set up a secure password for your online account to protect your personal information.' },
+      { id: 88, ch: 'l5', w: 'hallway', m: 'n. 복도', d: 'a passage in a building, or the area just inside the main entrance of a building', ex: 'They stood chatting in the hallway before class started.' },
+      { id: 89, ch: 'l5', w: "roll one's eyes", m: '눈을 굴리다', d: 'to move your eyes upwards as a way of showing that you are annoyed or bored after someone has done or said something', ex: 'He rolled his eyes at the ridiculous suggestion.' },
+      { id: 90, ch: 'l5', w: 'civil', m: 'a. 시민의, 민간의', d: 'of or relating to the ordinary people of a country, rather than members of religious organizations or the military', ex: 'The civil rights movement aimed to achieve equality and justice for all citizens.' },
+      { id: 91, ch: 'l5', w: 'liberty', m: 'n. 자유', d: 'the quality or state of being free', ex: 'Freedom of speech is a fundamental liberty in democratic societies.' },
+      { id: 92, ch: 'l5', w: 'privacy', m: 'n. 사생활', d: 'the state or condition of being free from being observed or disturbed by other people', ex: "The company's new policy aims to enhance user privacy and data protection measures." },
+      { id: 93, ch: 'l5', w: 'be sick of', m: '~에 넌더리 나다', d: 'to be tired of or annoyed by something', ex: "I'm sick of eating the same thing every day." },
+      { id: 94, ch: 'l5', w: 'countless', m: 'a. 무수한, 셀 수 없이 많은', d: 'too numerous to be counted', ex: 'There were countless stars twinkling in the night sky.' },
+      { id: 95, ch: 'l5', w: 'motto', m: 'n. 모토, 좌우명', d: 'a short sentence or phrase that expresses a belief or purpose', ex: 'The company\'s motto, "Quality over Quantity," guided its commitment to excellence.' },
+      { id: 96, ch: 'l5', w: 'benefit', m: 'n. 혜택', d: 'a helpful or good effect', ex: 'One of the benefits of working from home is the flexibility to create your own schedule.' },
+      { id: 97, ch: 'l5', w: 'ubiquitous', m: 'a. 어디에나 있는', d: 'seeming to be everywhere', ex: 'Smartphones have become ubiquitous in modern society, with nearly everyone owning one.' },
+      { id: 98, ch: 'l5', w: 'pause', m: 'v. 잠시 멈추다', d: 'to stop doing something for a short time, or to make something stop for a short time', ex: "Let's pause the meeting for a quick break." },
+      { id: 99, ch: 'l5', w: 'press', m: 'v. (집요히) 반복하다, 강조하다', d: 'to try hard to persuade someone to do something', ex: 'Despite his reluctance, she continued to press him to attend the party with her.' },
+      { id: 100, ch: 'l5', w: 'ridiculous', m: 'a. 웃기는, 말도 안 되는', d: 'stupid or unreasonable and deserving to be laughed at', ex: 'The idea of traveling to Mars for vacation seemed ridiculous to some, but others found it exciting.' },
+      { id: 101, ch: 'l5', w: 'earpiece', m: 'n. 수화기, 이어폰', d: 'the part of an instrument (such as a telephone, stethoscope, or hearing aid) that is placed against or inserted into the outer opening of the ear', ex: 'The security guard communicated with his team through the earpiece to coordinate their actions.' },
+      { id: 102, ch: 'l5', w: 'document', m: 'n. 서류', d: 'a paper or set of papers with written or printed information, esp. of an official type', ex: 'She carefully scanned each document for errors before submitting the report.' },
+      { id: 103, ch: 'l5', w: 'form', m: 'n. 양식', d: 'something, usually paper, that has spaces marked where you fill in information', ex: 'Please complete this form with your personal information and sign at the bottom.' },
+      { id: 104, ch: 'l5', w: 'fill ~ in on ...', m: '~에게 ...에 관한 정보를 알려주다', d: 'to give someone details about something', ex: 'Can you fill me in on what happened during the meeting?' },
+      { id: 105, ch: 'l5', w: 'profile', m: 'n. 프로필', d: "a short description of someone's life, work, character, etc.", ex: 'Her online dating profile accurately portrayed her interests and personality.' },
+      { id: 106, ch: 'l5', w: 'wander', m: 'v. 방황하다', d: 'to walk or move in a leisurely or aimless way', ex: 'Her thoughts would often wander during class, making it difficult to concentrate.' },
+      { id: 107, ch: 'l5', w: 'treat', m: 'v. 대하다', d: 'to behave toward someone or deal with something in a particular way', ex: 'He would always treat his guests with kindness and hospitality.' },
+      { id: 108, ch: 'l5', w: 'monitor', m: 'v. 감시하다', d: 'to watch and check something carefully over a period of time', ex: "The teacher monitored the students' progress throughout the semester." },
+      { id: 109, ch: 'l5', w: 'terminate', m: 'v. 종료하다', d: 'to (cause something to) end or stop; to bring to an end', ex: "She chose to terminate her membership at the gym because she wasn't using it enough." },
+      { id: 110, ch: 'l5', w: 'automatic', m: 'a. 자동의', d: 'able to operate independently of human control', ex: 'The software is set to perform automatic backups every night.' },
+      { id: 111, ch: 'l5', w: 'incomplete', m: 'a. 불완전한', d: 'lacking some parts, or not finished', ex: 'The puzzle was incomplete, with several missing pieces.' },
+      { id: 112, ch: 'l5', w: 'cease', m: 'v. 중단하다', d: 'to stop something', ex: 'The company decided to cease operations in the region due to declining sales.' },
+      { id: 113, ch: 'l5', w: 'beep', m: 'n. 삐 소리', d: "a short, high-pitched sound, often used to get someone's attention or as a signal", ex: 'The microwave emitted a loud beep when the timer reached zero.' },
+      { id: 114, ch: 'l5', w: 'confused', m: 'a. 혼란스러워하는', d: 'unable to think clearly or to understand something', ex: 'When faced with conflicting information, people often feel confused about what to believe.' },
+      { id: 115, ch: 'l5', w: 'silence', m: 'v. 침묵시키다', d: 'to stop someone from talking or something making a sound', ex: 'He silenced his phone before entering the meeting room.' },
+      { id: 116, ch: 'l5', w: 'unreadable', m: 'a. 무슨 생각을 하는지 알 수 없는', d: 'impossible to read and understand', ex: 'The technical jargon in the contract made it unreadable to those without a legal background.' },
+      { id: 117, ch: 'l5', w: 'antisocial', m: 'a. 반사회적인', d: 'not wanting to spend time with or be friendly with other people', ex: "He's often described as antisocial because he prefers solitude over socializing." },
+      { id: 118, ch: 'l5', w: 'interfere with', m: '~을 방해하다, 간섭하다', d: 'to prevent something from succeeding or from being done or happening as planned', ex: 'Loud noises can interfere with your ability to concentrate.' },
+      { id: 119, ch: 'l5', w: 'aggression', m: 'n. 공격성, 공격', d: 'actions or behavior that use threats or force against others', ex: "The dog's aggression towards strangers was a cause for concern." },
+      { id: 120, ch: 'l5', w: 'manage to', m: '간신히 ~하다', d: 'to succeed in doing something difficult', ex: "He managed to finish the project ahead of schedule, much to everyone's surprise." },
+      { id: 121, ch: 'l5', w: 'cellular', m: 'a. 무선전화의', d: 'relating to a phone system that sends signals by radio instead of by a wire', ex: 'Cellular phones have revolutionized communication by allowing people to connect wirelessly from anywhere.' },
+      { id: 122, ch: 'l5', w: 'persuade', m: 'v. 설득하다, 납득시키다', d: 'to convince someone to do something or believe something through reasoning, argument, or appeal', ex: 'She tried to persuade her friends to join her on the trip by highlighting all the exciting activities they could do together.' },
+      { id: 123, ch: 'l5', w: 'realize', m: 'v. 깨닫다', d: 'to become aware of or understand something clearly', ex: 'It took him years to realize his true passion and pursue it as a career.' },
+      { id: 124, ch: 'l5', w: 'horrified', m: 'a. 충격을 받은', d: 'very shocked', ex: 'They were horrified by the news of the natural disaster that struck their hometown.' },
+      { id: 125, ch: 'l5', w: 'guidance', m: 'n. 안내', d: 'help and advice about how to do something or about how to deal with problems', ex: 'The counselor provided guidance to students struggling with academic or personal issues.' },
+      { id: 126, ch: 'l5', w: 'senior', m: 'a. 고위의', d: 'high or higher in rank', ex: 'He was promoted to a senior position after years of dedicated service to the company.' },
+      { id: 127, ch: 'l5', w: 'employee', m: 'n. 직원', d: 'someone who is paid to work for someone else', ex: 'The employees were rewarded for their hard work with a bonus at the end of the year.' }
+    ];
+
+    // State
+    let mode = 'flashcard'; // flashcard | list | quiz | spelling
+    let filter = 'all';     // all | l4 | l5 | weak
+    let statusMap = {};     // { id: 'known' | 'weak' }
+    let fcDeck = [...VOCAB];
+    let fcIndex = 0;
+    let fcFlipped = false;
+    let fcShowFrontEx = true;
+
+    let hideWord = false;
+    let hideMeaning = false;
+    let searchQuery = '';
+
+    let quizType = 'meaning'; // meaning | engdef
+    let quizCurrent = null;
+    let quizAnswered = false;
+    let quizStreak = 0;
+    let quizCorrect = 0;
+    let quizTotal = 0;
+
+    let spellCurrent = null;
+    let spellAnswered = false;
+    let spellCorrect = 0;
+    let spellTotal = 0;
+
+    // Load saved progress safely
+    try {
+      const saved = localStorage.getItem('ybm_eng2_l4l5_vocab_status');
+      if (saved) statusMap = JSON.parse(saved);
+    } catch (e) {}
+
+    function saveStatus() {
+      try {
+        localStorage.setItem('ybm_eng2_l4l5_vocab_status', JSON.stringify(statusMap));
+      } catch (e) {}
+    }
+
+    function speak(text) {
+      try {
+        if (!('speechSynthesis' in window)) return;
+        window.speechSynthesis.cancel();
+        const clean = text.replace(/~|\.\.\./g, ' ');
+        const u = new SpeechSynthesisUtterance(clean);
+        u.lang = 'en-US';
+        u.rate = 0.92;
+        window.speechSynthesis.speak(u);
+      } catch (e) {}
+    }
+
+    function getPool() {
+      if (filter === 'l4') return VOCAB.filter(v => v.ch === 'l4');
+      if (filter === 'l5') return VOCAB.filter(v => v.ch === 'l5');
+      if (filter === 'weak') return VOCAB.filter(v => statusMap[v.id] === 'weak');
+      return [...VOCAB];
+    }
+
+    function updateGlobalStats() {
+      const known = VOCAB.filter(v => statusMap[v.id] === 'known').length;
+      const weak = VOCAB.filter(v => statusMap[v.id] === 'weak').length;
+      const pct = Math.round((known / VOCAB.length) * 100);
+      document.getElementById('masteryPct').textContent = `${pct}%`;
+      document.getElementById('knownCount').textContent = known;
+      document.getElementById('totalCount').textContent = VOCAB.length;
+      document.getElementById('masteryBar').style.width = `${pct}%`;
+      document.getElementById('weakFilterBtn').textContent = `헷갈리는 단어 (${weak})`;
+    }
+
+    // ================= FLASHCARD =================
+    function syncFcDeck(preserveOrder = false) {
+      const pool = getPool();
+      if (!preserveOrder) {
+        fcDeck = pool;
+        fcIndex = 0;
+      } else {
+        const ids = new Set(pool.map(x => x.id));
+        fcDeck = fcDeck.filter(x => ids.has(x.id));
+        if (fcDeck.length === 0) fcDeck = pool;
+        if (fcIndex >= fcDeck.length) fcIndex = Math.max(0, fcDeck.length - 1);
+      }
+      fcFlipped = false;
+      renderFlashcard();
+    }
+
+    function renderFlashcard() {
+      updateGlobalStats();
+      const emptyEl = document.getElementById('fcEmpty');
+      const stageEl = document.getElementById('fcStage');
+
+      if (fcDeck.length === 0) {
+        emptyEl.classList.remove('hidden');
+        stageEl.classList.add('hidden');
+        document.getElementById('fcCounter').textContent = '0 / 0';
+        return;
+      }
+
+      emptyEl.classList.add('hidden');
+      stageEl.classList.remove('hidden');
+
+      const item = fcDeck[fcIndex];
+      document.getElementById('fcCounter').textContent = `${fcIndex + 1} / ${fcDeck.length}`;
+      document.getElementById('flashcard').classList.toggle('is-flipped', fcFlipped);
+
+      const badge = document.getElementById('fcBadge');
+      badge.textContent = item.ch === 'l4' ? '4과 본문' : '5과 본문';
+      badge.className = `pill ${item.ch === 'l4' ? 'pill-sky' : 'pill-violet'}`;
+
+      const stBadge = document.getElementById('fcStatusBadge');
+      if (statusMap[item.id] === 'known') {
+        stBadge.textContent = '외웠음';
+        stBadge.className = 'pill pill-emerald';
+      } else if (statusMap[item.id] === 'weak') {
+        stBadge.textContent = '헷갈림';
+        stBadge.className = 'pill pill-rose';
+      } else {
+        stBadge.className = 'pill hidden';
+      }
+
+      document.getElementById('fcWord').textContent = item.w;
+      const frontEx = document.getElementById('fcFrontEx');
+      frontEx.textContent = item.ex;
+      frontEx.classList.toggle('hidden', !fcShowFrontEx);
+
+      document.getElementById('fcBackWord').textContent = item.w;
+      document.getElementById('fcBackChapter').textContent = item.ch === 'l4' ? '4과 본문' : '5과 본문';
+      document.getElementById('fcMeaning').textContent = item.m;
+      document.getElementById('fcEngDef').textContent = item.d;
+      document.getElementById('fcBackEx').textContent = item.ex;
+
+      document.getElementById('fcPrevBtn').disabled = fcIndex === 0;
+      document.getElementById('fcNextBtn').disabled = fcIndex === fcDeck.length - 1;
+    }
+
+    function setCardStatus(st) {
+      if (fcDeck.length === 0) return;
+      const item = fcDeck[fcIndex];
+      statusMap[item.id] = st;
+      saveStatus();
+      if (fcIndex < fcDeck.length - 1) {
+        fcIndex++;
+        fcFlipped = false;
+      } else {
+        fcFlipped = false;
+      }
+      renderFlashcard();
+    }
+
+    // ================= LIST =================
+    function renderList() {
+      updateGlobalStats();
+      const container = document.getElementById('vocabListContainer');
+      const q = searchQuery.trim().toLowerCase();
+      const list = getPool().filter(v => {
+        if (!q) return true;
+        return v.w.toLowerCase().includes(q) || v.m.toLowerCase().includes(q) || v.d.toLowerCase().includes(q);
+      });
+
+      container.innerHTML = '';
+      if (list.length === 0) {
+        container.innerHTML = '<div class="empty-box"><p style="font-weight:700;color:#64748b;">조건에 맞는 단어가 없습니다.</p></div>';
+        return;
+      }
+
+      list.forEach(item => {
+        const row = document.createElement('div');
+        const st = statusMap[item.id];
+        row.className = `vocab-row ${st === 'known' ? 'known' : st === 'weak' ? 'weak' : ''}`;
+
+        const speakBtn = document.createElement('button');
+        speakBtn.type = 'button';
+        speakBtn.className = 'speak-btn';
+        speakBtn.title = '발음 듣기';
+        speakBtn.innerHTML = '<svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5L6 9H2v6h4l5 4V5zm4.54 3.46a5 5 0 010 7.07"/></svg>';
+        speakBtn.addEventListener('click', () => speak(item.w));
+
+        const wordDiv = document.createElement('div');
+        wordDiv.className = `word-cell ${hideWord ? 'blurred' : ''}`;
+        wordDiv.textContent = item.w;
+        wordDiv.addEventListener('click', () => {
+          if (hideWord) wordDiv.classList.toggle('blurred');
+        });
+
+        const meanDiv = document.createElement('div');
+        meanDiv.className = `meaning-cell ${hideMeaning ? 'blurred' : ''}`;
+        meanDiv.innerHTML = `<div>${item.m}</div><div class="engdef-sub">${item.d}</div>`;
+        meanDiv.addEventListener('click', () => {
+          if (hideMeaning) meanDiv.classList.toggle('blurred');
+        });
+
+        const chkBtn = document.createElement('button');
+        chkBtn.type = 'button';
+        chkBtn.className = `check-btn ${st === 'known' ? 'is-known' : ''}`;
+        chkBtn.textContent = st === 'known' ? '암기 ✓' : '미암기';
+        chkBtn.addEventListener('click', () => {
+          statusMap[item.id] = statusMap[item.id] === 'known' ? 'weak' : 'known';
+          saveStatus();
+          renderList();
+        });
+
+        row.appendChild(speakBtn);
+        row.appendChild(wordDiv);
+        row.appendChild(meanDiv);
+        row.appendChild(chkBtn);
+        container.appendChild(row);
+      });
+    }
+
+    // ================= QUIZ =================
+    function nextQuizQuestion() {
+      updateGlobalStats();
+      const pool = getPool();
+      const emptyEl = document.getElementById('quizEmpty');
+      const stageEl = document.getElementById('quizStage');
+
+      if (pool.length < 1) {
+        emptyEl.classList.remove('hidden');
+        stageEl.classList.add('hidden');
+        return;
+      }
+      emptyEl.classList.add('hidden');
+      stageEl.classList.remove('hidden');
+
+      quizAnswered = false;
+      quizCurrent = pool[Math.floor(Math.random() * pool.length)];
+
+      // Build 3 distractors from full VOCAB
+      const distractors = [];
+      const shuffledAll = [...VOCAB].sort(() => Math.random() - 0.5);
+      for (const cand of shuffledAll) {
+        if (cand.id !== quizCurrent.id && cand.w !== quizCurrent.w && cand.m !== quizCurrent.m) {
+          distractors.push(cand);
+          if (distractors.length === 3) break;
+        }
+      }
+      const choices = [quizCurrent, ...distractors].sort(() => Math.random() - 0.5);
+
+      const badge = document.getElementById('quizChapterBadge');
+      badge.textContent = quizCurrent.ch === 'l4' ? '4과 본문' : '5과 본문';
+      badge.className = `pill ${quizCurrent.ch === 'l4' ? 'pill-sky' : 'pill-violet'}`;
+
+      const modeLabel = document.getElementById('quizModeLabel');
+      const promptMain = document.getElementById('quizPromptMain');
+      const promptSub = document.getElementById('quizPromptSub');
+
+      if (quizType === 'meaning') {
+        modeLabel.textContent = '알맞은 우리말 뜻을 고르세요';
+        promptMain.textContent = quizCurrent.w;
+        promptMain.style.fontSize = '28px';
+        promptSub.textContent = quizCurrent.ex;
+      } else {
+        modeLabel.textContent = '영영 풀이에 해당하는 영어 단어를 고르세요';
+        promptMain.textContent = `"${quizCurrent.d}"`;
+        promptMain.style.fontSize = '18px';
+        promptSub.textContent = '';
+      }
+
+      const optsEl = document.getElementById('quizOptions');
+      optsEl.innerHTML = '';
+      document.getElementById('quizFeedback').className = 'feedback-banner hidden';
+      document.getElementById('quizNextBtn').classList.add('hidden');
+
+      choices.forEach(ch => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'quiz-opt';
+        btn.textContent = quizType === 'meaning' ? ch.m : ch.w;
+        btn.addEventListener('click', () => {
+          if (quizAnswered) return;
+          quizAnswered = true;
+          quizTotal++;
+          const isOk = ch.id === quizCurrent.id;
+          if (isOk) {
+            quizCorrect++;
+            quizStreak++;
+          } else {
+            quizStreak = 0;
+            statusMap[quizCurrent.id] = 'weak';
+            saveStatus();
+          }
+          document.getElementById('quizStreak').textContent = quizStreak;
+          document.getElementById('quizCorrect').textContent = quizCorrect;
+          document.getElementById('quizTotal').textContent = quizTotal;
+          updateGlobalStats();
+
+          Array.from(optsEl.children).forEach((b, idx) => {
+            b.classList.add('locked');
+            if (choices[idx].id === quizCurrent.id) b.classList.add('correct');
+            else if (choices[idx].id === ch.id) b.classList.add('wrong');
+            else b.classList.add('muted');
+          });
+
+          const fb = document.getElementById('quizFeedback');
+          fb.className = `feedback-banner ${isOk ? 'fb-ok' : 'fb-no'}`;
+          fb.textContent = isOk
+            ? `정답! ${quizCurrent.w} = ${quizCurrent.m}`
+            : `오답! 정답은 "${quizCurrent.w} (${quizCurrent.m})" · 헷갈리는 단어에 저장됨`;
+          document.getElementById('quizNextBtn').classList.remove('hidden');
+        });
+        optsEl.appendChild(btn);
+      });
+    }
+
+    // ================= SPELLING =================
+    function maskWordInExample(word, ex) {
+      const base = word.replace(/~|\.\.\./g, '').trim().split(/\s+/)[0];
+      if (!base || base.length < 2) return ex;
+      const re = new RegExp(`\\b${base.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}[a-z]*\\b`, 'ig');
+      return ex.replace(re, '________');
+    }
+
+    function nextSpellQuestion() {
+      updateGlobalStats();
+      const pool = getPool();
+      const emptyEl = document.getElementById('spellEmpty');
+      const stageEl = document.getElementById('spellStage');
+
+      if (pool.length === 0) {
+        emptyEl.classList.remove('hidden');
+        stageEl.classList.add('hidden');
+        return;
+      }
+      emptyEl.classList.add('hidden');
+      stageEl.classList.remove('hidden');
+
+      spellAnswered = false;
+      spellCurrent = pool[Math.floor(Math.random() * pool.length)];
+
+      const badge = document.getElementById('spellChapterBadge');
+      badge.textContent = spellCurrent.ch === 'l4' ? '4과 본문' : '5과 본문';
+      badge.className = `pill ${spellCurrent.ch === 'l4' ? 'pill-sky' : 'pill-violet'}`;
+
+      document.getElementById('spellMeaning').textContent = spellCurrent.m;
+      document.getElementById('spellEngDef').textContent = spellCurrent.d;
+      document.getElementById('spellExample').textContent = maskWordInExample(spellCurrent.w, spellCurrent.ex);
+      document.getElementById('spellHintText').classList.add('hidden');
+
+      const input = document.getElementById('spellInput');
+      input.value = '';
+      input.className = 'spell-input';
+      input.disabled = false;
+      input.focus();
+
+      document.getElementById('spellFeedback').className = 'feedback-banner hidden';
+      document.getElementById('spellCheckBtn').classList.remove('hidden');
+      document.getElementById('spellSkipBtn').classList.remove('hidden');
+      document.getElementById('spellNextBtn').classList.add('hidden');
+    }
+
+    function finishSpell(isOk) {
+      spellAnswered = true;
+      spellTotal++;
+      if (isOk) {
+        spellCorrect++;
+      } else {
+        statusMap[spellCurrent.id] = 'weak';
+        saveStatus();
+      }
+      document.getElementById('spellCorrect').textContent = spellCorrect;
+      document.getElementById('spellTotal').textContent = spellTotal;
+      updateGlobalStats();
+
+      const input = document.getElementById('spellInput');
+      input.disabled = true;
+      input.className = `spell-input ${isOk ? 'ok' : 'no'}`;
+
+      const fb = document.getElementById('spellFeedback');
+      fb.className = `feedback-banner ${isOk ? 'fb-ok' : 'fb-no'}`;
+      fb.textContent = isOk
+        ? `정답입니다! (${spellCurrent.w})`
+        : `정답: ${spellCurrent.w} — 헷갈리는 단어에 추가되었습니다.`;
+
+      document.getElementById('spellCheckBtn').classList.add('hidden');
+      document.getElementById('spellSkipBtn').classList.add('hidden');
+      document.getElementById('spellNextBtn').classList.remove('hidden');
+    }
+
+    // ================= MODE & FILTER SWITCHING =================
+    function switchMode(nextMode) {
+      mode = nextMode;
+      document.querySelectorAll('.mode-tab').forEach(t => {
+        t.classList.toggle('active', t.dataset.mode === mode);
+      });
+      ['flashcard', 'list', 'quiz', 'spelling'].forEach(m => {
+        document.getElementById(`view-${m}`).classList.toggle('hidden', m !== mode);
+      });
+
+      if (mode === 'flashcard') syncFcDeck(true);
+      else if (mode === 'list') renderList();
+      else if (mode === 'quiz') nextQuizQuestion();
+      else if (mode === 'spelling') nextSpellQuestion();
+    }
+
+    function switchFilter(nextFilter) {
+      filter = nextFilter;
+      document.querySelectorAll('.filter-btn').forEach(b => {
+        b.classList.toggle('active', b.dataset.filter === filter);
+      });
+
+      if (mode === 'flashcard') syncFcDeck(false);
+      else if (mode === 'list') renderList();
+      else if (mode === 'quiz') nextQuizQuestion();
+      else if (mode === 'spelling') nextSpellQuestion();
+    }
+
+    // Event Bindings
+    document.querySelectorAll('.mode-tab').forEach(tab => {
+      tab.addEventListener('click', () => switchMode(tab.dataset.mode));
+    });
+
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => switchFilter(btn.dataset.filter));
+    });
+
+    document.getElementById('resetAllBtn').addEventListener('click', () => {
+      statusMap = {};
+      saveStatus();
+      quizCorrect = 0; quizTotal = 0; quizStreak = 0;
+      spellCorrect = 0; spellTotal = 0;
+      document.getElementById('quizStreak').textContent = '0';
+      document.getElementById('quizCorrect').textContent = '0';
+      document.getElementById('quizTotal').textContent = '0';
+      document.getElementById('spellCorrect').textContent = '0';
+      document.getElementById('spellTotal').textContent = '0';
+      switchFilter('all');
+    });
+
+    // Flashcard events
+    document.getElementById('flashcard').addEventListener('click', (e) => {
+      if (e.target.closest('#fcSpeakBtn')) return;
+      fcFlipped = !fcFlipped;
+      renderFlashcard();
+    });
+    document.getElementById('fcSpeakBtn').addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (fcDeck[fcIndex]) speak(fcDeck[fcIndex].w);
+    });
+    document.getElementById('fcFlipBtn').addEventListener('click', () => {
+      fcFlipped = !fcFlipped;
+      renderFlashcard();
+    });
+    document.getElementById('fcPrevBtn').addEventListener('click', () => {
+      if (fcIndex > 0) { fcIndex--; fcFlipped = false; renderFlashcard(); }
+    });
+    document.getElementById('fcNextBtn').addEventListener('click', () => {
+      if (fcIndex < fcDeck.length - 1) { fcIndex++; fcFlipped = false; renderFlashcard(); }
+    });
+    document.getElementById('markWeakBtn').addEventListener('click', () => setCardStatus('weak'));
+    document.getElementById('markKnowBtn').addEventListener('click', () => setCardStatus('known'));
+    document.getElementById('fcShuffleBtn').addEventListener('click', () => {
+      fcDeck.sort(() => Math.random() - 0.5);
+      fcIndex = 0;
+      fcFlipped = false;
+      renderFlashcard();
+    });
+    document.getElementById('fcToggleExBtn').addEventListener('click', (e) => {
+      fcShowFrontEx = !fcShowFrontEx;
+      e.target.textContent = fcShowFrontEx ? '앞면 예문 숨기기' : '앞면 예문 보이기';
+      renderFlashcard();
+    });
+    document.getElementById('fcBackAllBtn').addEventListener('click', () => switchFilter('all'));
+
+    // List events
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+      searchQuery = e.target.value;
+      renderList();
+    });
+    document.getElementById('hideWordBtn').addEventListener('click', (e) => {
+      hideWord = !hideWord;
+      e.target.classList.toggle('active-toggle', hideWord);
+      renderList();
+    });
+    document.getElementById('hideMeaningBtn').addEventListener('click', (e) => {
+      hideMeaning = !hideMeaning;
+      e.target.classList.toggle('active-toggle', hideMeaning);
+      renderList();
+    });
+
+    // Quiz events
+    document.getElementById('quizTypeMeaningBtn').addEventListener('click', () => {
+      quizType = 'meaning';
+      document.getElementById('quizTypeMeaningBtn').classList.add('active-toggle');
+      document.getElementById('quizTypeEngDefBtn').classList.remove('active-toggle');
+      nextQuizQuestion();
+    });
+    document.getElementById('quizTypeEngDefBtn').addEventListener('click', () => {
+      quizType = 'engdef';
+      document.getElementById('quizTypeEngDefBtn').classList.add('active-toggle');
+      document.getElementById('quizTypeMeaningBtn').classList.remove('active-toggle');
+      nextQuizQuestion();
+    });
+    document.getElementById('quizNextBtn').addEventListener('click', nextQuizQuestion);
+    document.getElementById('quizBackAllBtn').addEventListener('click', () => switchFilter('all'));
+
+    // Spelling events
+    document.getElementById('spellHintBtn').addEventListener('click', () => {
+      if (!spellCurrent) return;
+      const w = spellCurrent.w;
+      const hint = w.split(' ').map(part => {
+        if (part.length <= 2) return part;
+        return part[0] + '_'.repeat(part.length - 1);
+      }).join(' ');
+      const el = document.getElementById('spellHintText');
+      el.textContent = `힌트: ${hint} (${w.length}자)`;
+      el.classList.remove('hidden');
+    });
+    document.getElementById('spellForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (spellAnswered || !spellCurrent) return;
+      const val = document.getElementById('spellInput').value.trim().toLowerCase();
+      if (!val) return;
+      const target = spellCurrent.w.toLowerCase();
+      finishSpell(val === target);
+    });
+    document.getElementById('spellSkipBtn').addEventListener('click', () => {
+      if (spellAnswered || !spellCurrent) return;
+      finishSpell(false);
+    });
+    document.getElementById('spellNextBtn').addEventListener('click', nextSpellQuestion);
+    document.getElementById('spellBackAllBtn').addEventListener('click', () => switchFilter('all'));
+
+    // Keyboard shortcuts for Flashcard
+    document.addEventListener('keydown', (e) => {
+      if (mode !== 'flashcard') return;
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+      if (e.code === 'Space') {
+        e.preventDefault();
+        fcFlipped = !fcFlipped;
+        renderFlashcard();
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        if (fcIndex > 0) { fcIndex--; fcFlipped = false; renderFlashcard(); }
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        if (fcIndex < fcDeck.length - 1) { fcIndex++; fcFlipped = false; renderFlashcard(); }
+      } else if (e.key === '1') {
+        setCardStatus('weak');
+      } else if (e.key === '2') {
+        setCardStatus('known');
+      }
+    });
+
+    // Init
+    syncFcDeck(false);
+  </script>
+</body>
+</html>
